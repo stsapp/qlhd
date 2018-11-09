@@ -1,5 +1,7 @@
-﻿using QLHD.Service;
+﻿using AutoMapper;
+using QLHD.Service;
 using QLHD.Web.infrastructure.Core;
+using QLHD.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,20 +21,20 @@ namespace QLHD.Web.Api
             _dmhuongdanService = dmhuongdanService;
         }
 
-        //[Route("getall")]
-        //public HttpResponseMessage Get(HttpRequestMessage request)
-        //{
-        //    return CreateHttpResponse(request, () =>
-        //    {
-        //        var listCategory = _dmhuongdanService.GetAll();
+        [Route("getall")]
+        public HttpResponseMessage Get(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var listHD = _dmhuongdanService.GetAll();
 
-        //        var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+                var listHDViewModel = Mapper.Map<List<dmhuongdanViewModel>>(listHD);
 
-        //        HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listHDViewModel);
 
-        //        return response;
-        //    });
-        //}
+                return response;
+            });
+        }
 
         //[Route("add")]
         //public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)

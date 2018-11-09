@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLHD.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,16 @@ namespace QLHD.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IdmhuongdanService _dmhuongdanService;
+
+        public HomeController(IdmhuongdanService dmhuongdanService)
+        {
+            _dmhuongdanService = dmhuongdanService;
+        }
+
         public ActionResult Index()
         {
+            var listHD = _dmhuongdanService.GetAll().ToList();
             return View();
         }
 
