@@ -19,45 +19,45 @@ namespace QLHD.Web.Api
             _dmhuongdanService = dmhuongdanService;
         }
 
-        [Route("getall")]
-        public HttpResponseMessage Get(HttpRequestMessage request)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                var listCategory = _dmhuongdanService.GetAll();
+        //[Route("getall")]
+        //public HttpResponseMessage Get(HttpRequestMessage request)
+        //{
+        //    return CreateHttpResponse(request, () =>
+        //    {
+        //        var listCategory = _dmhuongdanService.GetAll();
 
-                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+        //        var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
+        //        HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
 
-                return response;
-            });
-        }
+        //        return response;
+        //    });
+        //}
 
-        [Route("add")]
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    PostCategory newPostCategory = new PostCategory();
-                    newPostCategory.UpdatePostCategory(postCategoryVm);
+        //[Route("add")]
+        //public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
+        //{
+        //    return CreateHttpResponse(request, () =>
+        //    {
+        //        HttpResponseMessage response = null;
+        //        if (ModelState.IsValid)
+        //        {
+        //            request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+        //        }
+        //        else
+        //        {
+        //            PostCategory newPostCategory = new PostCategory();
+        //            newPostCategory.UpdatePostCategory(postCategoryVm);
 
-                    var category = _postCategoryService.Add(newPostCategory);
-                    _postCategoryService.Save();
+        //            var category = _postCategoryService.Add(newPostCategory);
+        //            _postCategoryService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.Created, category);
+        //            response = request.CreateResponse(HttpStatusCode.Created, category);
 
-                }
-                return response;
-            });
-        }
+        //        }
+        //        return response;
+        //    });
+        //}
 
     }
 }
