@@ -206,6 +206,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QLHD.Common\QLHD.Common.csproj">
+      <Project>{a13b0ed2-afbd-4ef2-ba04-707cadb12d2a}</Project>
+      <Name>QLHD.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QLHD.Data\QLHD.Data.csproj">
+      <Project>{6f1e30ff-9e32-4535-bb9f-e9b34982a41e}</Project>
+      <Name>QLHD.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QLHD.Service\QLHD.Service.csproj">
+      <Project>{61a11b3e-cb77-4aa2-afb4-09b08eadb147}</Project>
+      <Name>QLHD.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

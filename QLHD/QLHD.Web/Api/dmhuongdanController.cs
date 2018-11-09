@@ -1,4 +1,5 @@
-﻿using QLHD.Web.infrastructure.Core;
+﻿using QLHD.Service;
+using QLHD.Web.infrastructure.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,33 +9,55 @@ using System.Web.Http;
 
 namespace QLHD.Web.Api
 {
+    [RoutePrefix("api/dmhuongdan")]
     public class dmhuongdanController : ApiControllerBase
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        private IdmhuongdanService _dmhuongdanService;
+
+        public dmhuongdanController(IErrorService errorService, IdmhuongdanService dmhuongdanService) : base(errorService)
         {
-            return new string[] { "value1", "value2" };
+            _dmhuongdanService = dmhuongdanService;
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        [Route("getall")]
+        public HttpResponseMessage Get(HttpRequestMessage request)
         {
-            return "value";
+            return CreateHttpResponse(request, () =>
+            {
+                var listCategory = _dmhuongdanService.GetAll();
+
+                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
+
+                return response;
+            });
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    PostCategory newPostCategory = new PostCategory();
+                    newPostCategory.UpdatePostCategory(postCategoryVm);
+
+                    var category = _postCategoryService.Add(newPostCategory);
+                    _postCategoryService.Save();
+
+                    response = request.CreateResponse(HttpStatusCode.Created, category);
+
+                }
+                return response;
+            });
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
     }
 }
