@@ -139,6 +139,8 @@ namespace QLHD.Data.Models
 
         public string lylich { get; set; }
 
+        public bool Status { set; get; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<phep> pheps { get; set; }
 

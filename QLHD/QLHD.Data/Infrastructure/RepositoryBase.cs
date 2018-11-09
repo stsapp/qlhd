@@ -147,6 +147,11 @@ namespace QLHD.Data.Infrastructure
             return dataContext.Set<T>().Count<T>(predicate) > 0;
         }
 
+        public T GetSingleById(string id)
+        {
+            return dbSet.Find(id);
+        }
+
         #endregion Implementation
     }
 }
