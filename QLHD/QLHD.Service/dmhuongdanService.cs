@@ -1,11 +1,7 @@
 ﻿using QLHD.Data.Infrastructure;
 using QLHD.Data.Models;
 using QLHD.Data.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QLHD.Service
 {
@@ -33,7 +29,7 @@ namespace QLHD.Service
     public class dmhuongdanService : IdmhuongdanService
     {
         private IdmhuongdanRepository _dmhuongdanRepository;
-        IUnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork;
 
         public dmhuongdanService(IdmhuongdanRepository dmhuongdanRepository, IUnitOfWork unitOfWork)
         {
@@ -70,7 +66,7 @@ namespace QLHD.Service
 
         public IEnumerable<dmhuongdan> GetAllPaging(int page, int pageSize, out int totalRow)
         {
-            return _dmhuongdanRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
+            return _dmhuongdanRepository.GetMultiPaging(x => x.Status == true, out totalRow, page, pageSize);
         }
 
         public dmhuongdan GetById(string id)

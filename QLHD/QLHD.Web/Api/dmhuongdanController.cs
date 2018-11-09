@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLHD.Web.infrastructure.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,7 +8,7 @@ using System.Web.Http;
 
 namespace QLHD.Web.Api
 {
-    public class dmhuongdanController : ApiController
+    public class dmhuongdanController : ApiControllerBase
     {
         // GET api/<controller>
         public IEnumerable<string> Get()

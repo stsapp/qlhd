@@ -14,11 +14,11 @@ namespace QLHD.Data.Models
 
         public virtual DbSet<dmhuongdan> dmhuongdans { get; set; }
         public virtual DbSet<doituong> doituongs { get; set; }
+        public virtual DbSet<Error> Errors { get; set; }
         public virtual DbSet<loaitour> loaitours { get; set; }
         public virtual DbSet<login> logins { get; set; }
         public virtual DbSet<phep> pheps { get; set; }
         public virtual DbSet<quyettoandoan> quyettoandoans { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tamung> tamungs { get; set; }
         public virtual DbSet<tour> tours { get; set; }
         public virtual DbSet<tourhuongdan> tourhuongdans { get; set; }

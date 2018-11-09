@@ -58,18 +58,19 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Models\dmhuongdan.cs" />
     <Compile Include="Models\doituong.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\loaitour.cs" />
     <Compile Include="Models\login.cs" />
     <Compile Include="Models\phep.cs" />
     <Compile Include="Models\QLHDDbContext.cs" />
     <Compile Include="Models\quyettoandoan.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\tamung.cs" />
     <Compile Include="Models\tour.cs" />
     <Compile Include="Models\tourhuongdan.cs" />
     <Compile Include="Models\tourKhach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\dmhuongdanRepository.cs" />
+    <Compile Include="Repositories\ErrorRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
